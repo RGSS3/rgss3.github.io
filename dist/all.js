@@ -75,11 +75,27 @@ RE.$B = RE.bootstrapFuncs = [];
 RE.$P = {};
 RE.$O = {};
 RE.bootstrap = function () {
-  RE.$B.forEach(function (f) {
-    f.bind(RE)();
-  });
+    RE.$B.forEach(function (f) {
+        f.bind(RE)();
+    });
 };
 module.exports = RE;
+
+RE.$L = {};
+RE.$L.script = function (src, f) {
+    var s = document.createElement("script");
+    if (f) s.addEventListener('load', f, false);
+    s.src = src;
+    document.body.appendChild(s);
+};
+RE.$L.link = function (src, f) {
+    var s = document.createElement("link");
+    if (f) s.addEventListener('load', f, false);
+    s.rel = "stylesheet";
+    s.href = src;
+    s.type = "text/css";
+    document.body.appendChild(s);
+};
 
 RE.$C = RE.config = __webpack_require__(4);
 
@@ -88,10 +104,14 @@ __webpack_require__(5);
 __webpack_require__(7);
 var cm = window.CodeMirror;
 RE.$B.push(() => {
-  var editor = RE.$O['editor'] = new cm(document.body);
-  editor.setOption("mode", "ruby");
-  editor.setOption("theme", "solarized dark");
-  editor.setOption("value", "class A\nend");
+
+    RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
+    var editor = RE.$O['editor'] = new cm(document.body);
+    RE.$L.script("https://unpkg.com/codemirror/mode/ruby/ruby.js", function () {
+        editor.setOption("mode", "ruby");
+    });
+    editor.setOption("theme", "solarized dark");
+    editor.setOption("value", "class A\nend");
 });
 
 /***/ }),
