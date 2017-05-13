@@ -8,10 +8,13 @@
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "css-loader": "^0.28.1",
+    "file-loader": "^0.11.1",
+    "glob": "^7.1.1",
     "style-loader": "^0.17.0",
     "webpack": "^2.5.1"
   },
   "scripts": {
+    "go":  "start index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
