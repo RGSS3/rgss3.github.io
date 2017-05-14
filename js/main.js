@@ -34,8 +34,10 @@ require('../css/main.css')
 var cm = window.CodeMirror;
 RE.$B.push( () => {
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
+    RE.$L.link("https://unpkg.com/codemirror/addon/dialog/dialog.css");
     var editor = RE.$O['editor'] = new cm(document.body);
     RE.$L.script("https://unpkg.com/codemirror/mode/ruby/ruby.js", function(){ editor.setOption("mode", "ruby");});
+    RE.$L.script("https://unpkg.com/codemirror/addon/dialog/dialog.js");
     editor.setOption("theme", "solarized dark");
     editor.setOption("value", "class A\nend");    
 });
