@@ -29,13 +29,27 @@ RE.$L.link   = function(src, f){
 RE.$C   = RE.config = require('./config/main.conf.js')
 RE.$CMD     = {};
 RE.$CONTEXT = {};
+
 require('./load/fonts.js');
 require('./load/codemirror.js')
 require('../css/main.css')
 var cm = window.CodeMirror;
 RE.$B.push( () => {
-    RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
+    RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css", function(){
+        RE.$L.script("https://unpkg.com/store/dist/store.everything.min.js", function(){
+            RE.$PS = store;
+            var init = store.get('RE.init') || "";
+            try{
+              eval(init);  
+            }catch(e){
+                console.error(e);
+                alert("error when loading init script");
+            }
+        });        
+    });
     RE.$L.link("https://unpkg.com/codemirror/addon/dialog/dialog.css");
+                
+   
     var editor    = RE.$O['editor'] = new cm(document.body);
     var extraKeys = RE.$O['keymap'] = {};
     RE.$L.script("https://unpkg.com/codemirror/mode/javascript/javascript.js", function(){ editor.setOption("mode", "javascript");});
