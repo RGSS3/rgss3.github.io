@@ -26,8 +26,9 @@ RE.$L.link   = function(src, f){
     
 }
 
-RE.$C = RE.config = require('./config/main.conf.js')
-
+RE.$C   = RE.config = require('./config/main.conf.js')
+RE.$CMD     = {};
+RE.$CONTEXT = {};
 require('./load/fonts.js');
 require('./load/codemirror.js')
 require('../css/main.css')
@@ -35,9 +36,17 @@ var cm = window.CodeMirror;
 RE.$B.push( () => {
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
     RE.$L.link("https://unpkg.com/codemirror/addon/dialog/dialog.css");
-    var editor = RE.$O['editor'] = new cm(document.body);
-    RE.$L.script("https://unpkg.com/codemirror/mode/ruby/ruby.js", function(){ editor.setOption("mode", "ruby");});
+    var editor    = RE.$O['editor'] = new cm(document.body);
+    var extraKeys = RE.$O['keymap'] = {};
+    RE.$L.script("https://unpkg.com/codemirror/mode/javascript/javascript.js", function(){ editor.setOption("mode", "javascript");});
     RE.$L.script("https://unpkg.com/codemirror/addon/dialog/dialog.js");
     editor.setOption("theme", "solarized dark");
-    editor.setOption("value", "class A\nend");    
+    editor.setOption("value", "alert('Hello world')");    
+    editor.setOption("extraKeys", extraKeys);
+    RE.$CMD["run"] = function(){
+        eval(RE.$O.editor.getOption('value'));
+    };
+    RE.$O["keymap"]['Ctrl-1'] = function(){
+       RE.$CMD["run"]();  
+    };
 });
