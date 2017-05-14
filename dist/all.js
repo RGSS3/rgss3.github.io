@@ -12395,7 +12395,7 @@ function updateLink(linkElement, options, obj) {
 /***/ (function(module, exports) {
 
 module.exports = {
-    ["main.fonts"]: ["Source Sans Pro"]
+    ["main.fonts"]: ["Source Code Pro"]
 };
 
 /***/ }),
@@ -12616,7 +12616,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Sans Pro\";\r\n  font-size:  13px;\r\n}", ""]);
+exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n}", ""]);
 
 // exports
 
