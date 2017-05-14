@@ -104,7 +104,6 @@ __webpack_require__(5);
 __webpack_require__(7);
 var cm = window.CodeMirror;
 RE.$B.push(() => {
-
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
     var editor = RE.$O['editor'] = new cm(document.body);
     RE.$L.script("https://unpkg.com/codemirror/mode/ruby/ruby.js", function () {
@@ -12616,7 +12615,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n}", ""]);
+exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n  height: 100%;\r\n  width: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  clear: both;\r\n  position: absolute;\r\n}", ""]);
 
 // exports
 

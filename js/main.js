@@ -33,10 +33,9 @@ require('./load/codemirror.js')
 require('../css/main.css')
 var cm = window.CodeMirror;
 RE.$B.push( () => {
-    
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
     var editor = RE.$O['editor'] = new cm(document.body);
     RE.$L.script("https://unpkg.com/codemirror/mode/ruby/ruby.js", function(){ editor.setOption("mode", "ruby");});
     editor.setOption("theme", "solarized dark");
-    editor.setOption("value", "class A\nend");
+    editor.setOption("value", "class A\nend");    
 });
