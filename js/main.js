@@ -54,7 +54,7 @@ for(let i = 1; i < 100 + 1; ++i){
 result(sum);
 
 /***
- Press Ctrl-! to run, the result will be here
+ Press Ctrl-! = Shift-Ctrl-1 to run, the result will be here
  ***/`);    
     editor.setOption("extraKeys", extraKeys);
     RE.$CMD["run"] = function(){
