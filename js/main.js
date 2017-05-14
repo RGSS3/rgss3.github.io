@@ -41,12 +41,26 @@ RE.$B.push( () => {
     RE.$L.script("https://unpkg.com/codemirror/mode/javascript/javascript.js", function(){ editor.setOption("mode", "javascript");});
     RE.$L.script("https://unpkg.com/codemirror/addon/dialog/dialog.js");
     editor.setOption("theme", "solarized dark");
-    editor.setOption("value", "alert('Hello world')");    
+    editor.setOption("value", `const result = (val) => {
+   let value = RE.$O["editor"].getValue();
+   value     = value.replace(/\\/\\*\\*\\*\\n[\\w\\W]*? \\*\\*\\*\\//, "/***\\n" + val + "\\n ***/");
+   RE.$O["editor"].setValue(value);
+}
+let sum = 0;
+for(let i = 1; i < 100 + 1; ++i){
+   sum += i;
+}
+
+result(sum);
+
+/***
+ Press Ctrl-! to run, the result will be here
+ ***/`);    
     editor.setOption("extraKeys", extraKeys);
     RE.$CMD["run"] = function(){
-        eval(RE.$O.editor.getOption('value'));
+        eval(RE.$O.editor.getValue());
     };
-    RE.$O["keymap"]['Ctrl-1'] = function(){
+    RE.$O["keymap"]['Shift-Ctrl-1'] = function(){
        RE.$CMD["run"]();  
     };
 });
