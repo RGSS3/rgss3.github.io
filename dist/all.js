@@ -86,6 +86,7 @@ RE.$L.script = function (src, f) {
     var s = document.createElement("script");
     if (f) s.addEventListener('load', f, false);
     s.src = src;
+    s.type = "text/javascript";
     document.body.appendChild(s);
 };
 RE.$L.link = function (src, f) {
@@ -153,8 +154,16 @@ RE.$B.push(() => {
     RE.$CMD["run"] = function () {
         eval(RE.$O.editor.getValue());
     };
+    RE.$CMD["command"] = function (text) {
+        console.log(text);
+    };
     RE.$O["keymap"]['Shift-Ctrl-1'] = function () {
         RE.$CMD["run"]();
+    };
+    RE.$O["keymap"]['Ctrl-`'] = function () {
+        RE.$O.editor.openDialog("<input class='commandbar'>", function (text) {
+            RE.$CMD["command"](text);
+        });
     };
     Object.defineProperty(window, 'help', { get: function () {
             console.log(RE.$B.helpMsg);
@@ -12663,7 +12672,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n  height: 100%;\r\n  width: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  clear: both;\r\n  position: absolute;\r\n}", ""]);
+exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n  height: 100%;\r\n  width: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  clear: both;\r\n  position: absolute;\r\n}\r\n\r\n.commandbar{\r\n   \r\n    font-family: \"Source Code Pro\";\r\n    font-size:  13px;\r\n   \r\n}", ""]);
 
 // exports
 

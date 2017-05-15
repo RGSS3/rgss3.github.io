@@ -8,3 +8,10 @@ body, .CodeMirror{
   clear: both;
   position: absolute;
 }
+
+.commandbar{
+   
+    font-family: "Source Code Pro";
+    font-size:  13px;
+   
+}

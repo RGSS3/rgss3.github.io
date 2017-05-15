@@ -82,8 +82,14 @@ RE.$B.push( () => {
     RE.$CMD["run"] = function(){
         eval(RE.$O.editor.getValue());
     };
+    RE.$CMD["command"] = function(text){
+        console.log(text);
+    }
     RE.$O["keymap"]['Shift-Ctrl-1'] = function(){
        RE.$CMD["run"]();  
+    };
+    RE.$O["keymap"]['Ctrl-`'] = function(){
+       RE.$O.editor.openDialog("<input class='commandbar'>", function(text){ RE.$CMD["command"](text)});
     };
     Object.defineProperty(window, 'help', {get: function(){
       console.log(RE.$B.helpMsg);
