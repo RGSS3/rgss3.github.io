@@ -91,6 +91,9 @@ RE.$B.push( () => {
     RE.$O["keymap"]['Ctrl-`'] = function(){
        RE.$O.editor.openDialog("<input class='commandbar'>", function(text){ RE.$CMD["command"](text)});
     };
+    document.querySelector("#run").addEventListener('click', function(){
+        RE.$CMD["run"]();  
+    })
     Object.defineProperty(window, 'help', {get: function(){
       console.log(RE.$B.helpMsg);
     }});

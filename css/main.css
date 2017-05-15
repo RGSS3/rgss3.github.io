@@ -10,8 +10,29 @@ body, .CodeMirror{
 }
 
 .commandbar{
-   
     font-family: "Source Code Pro";
     font-size:  13px;
-   
+}
+
+@media screen and (max-device-width:1000px){
+    .phone-run{
+        display: block;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        height: 60px;
+        z-index: 5000;
+        width: 100%;
+        border: 1px solid #845959;
+        background: #845959;
+        color: rgb(93, 85, 109);
+    }
+}
+
+
+@media screen and (min-device-width:1000px){
+    .phone-run{
+        display: none;
+    }
 }

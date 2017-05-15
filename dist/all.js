@@ -165,6 +165,9 @@ RE.$B.push(() => {
             RE.$CMD["command"](text);
         });
     };
+    document.querySelector("#run").addEventListener('click', function () {
+        RE.$CMD["run"]();
+    });
     Object.defineProperty(window, 'help', { get: function () {
             console.log(RE.$B.helpMsg);
         } });
@@ -12672,7 +12675,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n  height: 100%;\r\n  width: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  clear: both;\r\n  position: absolute;\r\n}\r\n\r\n.commandbar{\r\n   \r\n    font-family: \"Source Code Pro\";\r\n    font-size:  13px;\r\n   \r\n}", ""]);
+exports.push([module.i, "body, .CodeMirror{\r\n  font-family: \"Source Code Pro\";\r\n  font-size:  13px;\r\n  height: 100%;\r\n  width: 100%;\r\n  padding: 0px;\r\n  margin: 0px;\r\n  clear: both;\r\n  position: absolute;\r\n}\r\n\r\n.commandbar{\r\n    font-family: \"Source Code Pro\";\r\n    font-size:  13px;\r\n}\r\n\r\n@media screen and (max-device-width:1000px){\r\n    .phone-run{\r\n        display: block;\r\n        position: fixed;\r\n        bottom: 0px;\r\n        left: 0px;\r\n        right: 0px;\r\n        height: 60px;\r\n        z-index: 5000;\r\n        width: 100%;\r\n        border: 1px solid #845959;\r\n        background: #845959;\r\n        color: rgb(93, 85, 109);\r\n    }\r\n}\r\n\r\n\r\n@media screen and (min-device-width:1000px){\r\n    .phone-run{\r\n        display: none;\r\n    }\r\n}", ""]);
 
 // exports
 
