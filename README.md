@@ -1,5 +1,7 @@
 RGSS3 Meta Editor 
-***
+====================
+
+HEAVY BARE METAL
 
 * meta editor
 * press ctrl-shift-1 to run at current context
