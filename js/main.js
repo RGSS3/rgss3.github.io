@@ -14,6 +14,7 @@ RE.$L.script = function(src, f){
     var s = document.createElement("script");
     if(f) s.addEventListener('load', f, false);
     s.src = src;
+    s.type = "text/javascript";
     document.body.appendChild(s);
 };
 RE.$L.link   = function(src, f){
