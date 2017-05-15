@@ -26,6 +26,27 @@ RE.$L.link   = function(src, f){
     
 }
 
+RE.$B.initTheme = "solarized dark";
+RE.$B.initValue = `const result = (val) => {
+   let value = RE.$O["editor"].getValue();
+   value     = value.replace(/\\/\\*\\*\\*\\n[\\w\\W]*? \\*\\*\\*\\//, "/***\\n" + val + "\\n ***/");
+   RE.$O["editor"].setValue(value);
+}
+let sum = 0;
+for(let i = 1; i < 100 + 1; ++i){
+   sum += i;
+}
+
+result(sum);
+
+/***
+ Press Ctrl-! = Shift-Ctrl-1 to run, the result will be here
+ ***/`;
+RE.$B.helpMsg = `
+  Press Ctrl-! to run code
+  setting (RE.$PS.set("RE.init", "value");) will save init script to local
+`;
+
 RE.$C   = RE.config = require('./config/main.conf.js')
 RE.$CMD     = {};
 RE.$CONTEXT = {};
@@ -54,22 +75,8 @@ RE.$B.push( () => {
     var extraKeys = RE.$O['keymap'] = {};
     RE.$L.script("https://unpkg.com/codemirror/mode/javascript/javascript.js", function(){ editor.setOption("mode", "javascript");});
     RE.$L.script("https://unpkg.com/codemirror/addon/dialog/dialog.js");
-    editor.setOption("theme", "solarized dark");
-    editor.setOption("value", `const result = (val) => {
-   let value = RE.$O["editor"].getValue();
-   value     = value.replace(/\\/\\*\\*\\*\\n[\\w\\W]*? \\*\\*\\*\\//, "/***\\n" + val + "\\n ***/");
-   RE.$O["editor"].setValue(value);
-}
-let sum = 0;
-for(let i = 1; i < 100 + 1; ++i){
-   sum += i;
-}
-
-result(sum);
-
-/***
- Press Ctrl-! = Shift-Ctrl-1 to run, the result will be here
- ***/`);    
+    editor.setOption("theme", RE.$B.initTheme);
+    editor.setOption("value", RE.$B.initValue);    
     editor.setOption("extraKeys", extraKeys);
     RE.$CMD["run"] = function(){
         eval(RE.$O.editor.getValue());
@@ -77,4 +84,7 @@ result(sum);
     RE.$O["keymap"]['Shift-Ctrl-1'] = function(){
        RE.$CMD["run"]();  
     };
+    Object.defineProperty(window, 'help', {get: function(){
+      console.log(RE.$B.helpMsg);
+    }});
 });
