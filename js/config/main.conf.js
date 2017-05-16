@@ -1,3 +1,3 @@
 module.exports = {
-    ["main.fonts"] : ["Source Code Pro"],
+    ["main.fonts"] : [],
 }
