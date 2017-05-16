@@ -1,7 +1,11 @@
 let RE = window.RE = {};
+
 RE.$B = RE.bootstrapFuncs = [];
 RE.$P = {};
 RE.$O = {};
+RE.$A = RE.$P.axios = require('axios/dist/axios.min.js');
+RE.$P.bacon = require('baconjs/dist/bacon.min.js');
+
 RE.bootstrap = function(){
   RE.$B.forEach(function(f){
     f.bind(RE)(); 
@@ -23,10 +27,19 @@ RE.$L.link   = function(src, f){
     s.rel  = "stylesheet";
     s.href = src;
     s.type = "text/css";
-    document.body.appendChild(s);
-    
-}
+    document.body.appendChild(s);   
+};
+RE.$L.scriptPromise = function(src){
+    return new Promise(function(res, rej){
+        RE.$L.script(src, res);
+    });
+};
 
+RE.$L.linkPromise = function(src){
+    return new Promise(function(res, rej){
+        RE.$L.link(src, res);
+    });
+};
 RE.$B.initTheme = "solarized dark";
 RE.$B.initValue = `const result = (val) => {
    let value = RE.$O["editor"].getValue();
@@ -51,12 +64,20 @@ RE.$B.helpMsg = `
 RE.$C   = RE.config = require('./config/main.conf.js')
 RE.$CMD     = {};
 RE.$CONTEXT = {};
+RE.$R = require('./load/resource.js')
 
 require('./load/fonts.js');
 require('./load/codemirror.js')
 require('../css/main.css')
+
 var cm = window.CodeMirror;
 RE.$B.push( () => {
+    var o = _ => _;
+    window.location.hash.replace(/\+([^+]*)/g, function(thing){
+        o = (o => _ => RE.$R.get(thing)(o))(o);
+    });
+    o();
+    
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css", function(){
         RE.$L.script("https://unpkg.com/store/dist/store.everything.min.js", function(){
             RE.$PS = store;
@@ -70,7 +91,7 @@ RE.$B.push( () => {
         });        
     });
     RE.$L.link("https://unpkg.com/codemirror/addon/dialog/dialog.css");
-                
+    
    
     var editor    = RE.$O['editor'] = new cm(document.body);
     var extraKeys = RE.$O['keymap'] = {};
