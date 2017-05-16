@@ -21,7 +21,7 @@ R.get         = function(name){
 
 R.addHandle(/^\+(.*)$/, function(match){
    url = match[1];
-   if(/^.css/.test(url)){
+   if(/\.css$/.test(url)){
      return function(next){
        RE.$L.link("https://unpkg.com/" + url, next);
      };    

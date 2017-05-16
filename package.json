@@ -1,6 +1,6 @@
 {
   "name": "rgss3.github.io",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "dist/all.js",
   "dependencies": {},
