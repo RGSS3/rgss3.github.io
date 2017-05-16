@@ -1,3 +1,3 @@
 module.exports = {
-    ["main.fonts"] : [],
+    ["main.fonts"] : null,
 }

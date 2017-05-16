@@ -12486,7 +12486,7 @@ module.exports = "data:application/font-woff2;base64,d09GMgABAAAAACF8AA4AAAAAUBg
 /***/ (function(module, exports) {
 
 module.exports = {
-    ["main.fonts"]: []
+    ["main.fonts"]: null
 };
 
 /***/ }),
