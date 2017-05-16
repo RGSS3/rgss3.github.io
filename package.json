@@ -1,8 +1,8 @@
 {
   "name": "rgss3.github.io",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.html",
+  "main": "dist/all.js",
   "dependencies": {},
   "devDependencies": {
     "axios": "^0.16.1",
