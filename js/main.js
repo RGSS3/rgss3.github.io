@@ -74,11 +74,11 @@ var cm = window.CodeMirror;
 RE.$B.push( () => {
     
     window.location.hash.replace(/\+([^+]*)/g, function(thing){
-       RE.$R.get(thing, _ => _);
+       RE.$R.get(thing)(_ => _);
     });
     
     window.location.search.replace(/\+([^+]*)/g, function(thing){
-        RE.$R.get(thing, _ => _);
+        RE.$R.get(thing)(_ => _);
     });
     
     
