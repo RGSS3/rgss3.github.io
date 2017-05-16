@@ -76,6 +76,9 @@ RE.$B.push( () => {
     window.location.hash.replace(/\+([^+]*)/g, function(thing){
         o = (o => _ => RE.$R.get(thing)(o))(o);
     });
+    window.location.search.replace(/\+([^+]*)/g, function(thing){
+        o = (o => _ => RE.$R.get(thing)(o))(o);
+    });
     o();
     
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css", function(){
