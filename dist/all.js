@@ -144,15 +144,14 @@ __webpack_require__(10);
 
 var cm = window.CodeMirror;
 RE.$B.push(() => {
-    var o = _ => _;
+
     window.location.hash.replace(/\+([^+]*)/g, function (thing) {
-        o = (o => _ => RE.$R.get(thing)(o))(o);
+        RE.$R.get(thing, _ => _);
     });
-    console.log(window.location.search);
+
     window.location.search.replace(/\+([^+]*)/g, function (thing) {
-        o = (o => _ => RE.$R.get(thing)(o))(o);
+        RE.$R.get(thing, _ => _);
     });
-    o();
 
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css", function () {
         RE.$L.script("https://unpkg.com/store/dist/store.everything.min.js", function () {
