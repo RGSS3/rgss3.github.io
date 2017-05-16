@@ -21,11 +21,9 @@ R.get         = function(name){
 
 R.addHandle(/^\+(.*)$/, function(match){
    url = match[1];
-   if(url.indexOf("/") == -1){
-     return function(next){
-         RE.$L.script("https://unpkg.com/" + url, next);
-     };
-   }
+   return function(next){
+     RE.$L.script("https://unpkg.com/" + url, next);
+   };
 });
 
 
