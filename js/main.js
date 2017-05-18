@@ -5,6 +5,7 @@ RE.$P = {};
 RE.$O = {};
 RE.$A = RE.$P.axios = require('axios/dist/axios.min.js');
 RE.$P.bacon = require('baconjs/dist/bacon.min.js');
+RE.Stream = require('stream-browserify');
 
 RE.bootstrap = function(){
   RE.$B.forEach(function(f){

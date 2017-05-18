@@ -1,6 +1,6 @@
 {
   "name": "rgss3.github.io",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "",
   "main": "dist/all.js",
   "dependencies": {},
@@ -19,7 +19,7 @@
     "webpack": "^2.5.1"
   },
   "scripts": {
-    "go": "start index.html",
+    "go": "start index_local.html",
     "packgo": "webpack && npm run go",
     "test": "echo \"Error: no test specified\" && exit 1",
     "push": "git add . && git commit && git push -u origin master"
