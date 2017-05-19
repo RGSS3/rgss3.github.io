@@ -6,13 +6,13 @@ RE.$O = {};
 RE.$A = RE.$P.axios = require('axios/dist/axios.min.js');
 RE.$P.bacon = require('baconjs/dist/bacon.min.js');
 RE.Stream = require('stream-browserify');
-
+RE.Jison  = require('jison');  
 RE.bootstrap = function(){
   RE.$B.forEach(function(f){
-    f.bind(RE)(); 
+    f.bind(RE)();   
   });
 };
-module.exports = RE;
+module.exports = RE; 
 
 RE.$L = {};
 RE.$L.script = function(src, f){
