@@ -41,7 +41,7 @@ RE.$L.linkPromise = function(src){
         RE.$L.link(src, res);
     });
 };
-RE.$B.initTheme = "solarized dark";
+RE.$B.initTheme = "stellarized dark";
 RE.$B.initValue = `const result = (val) => {
    let value = RE.$O["editor"].getValue();
    value     = value.replace(/\\/\\*\\*\\*\\n[\\w\\W]*? \\*\\*\\*\\//, "/***\\n" + val + "\\n ***/");
@@ -83,18 +83,18 @@ RE.$B.push( () => {
     });
     
     
-    RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css", function(){
-        RE.$L.script("https://unpkg.com/store/dist/store.everything.min.js", function(){
-            RE.$PS = store;
-            var init = store.get('RE.init') || "";
-            try{
-              eval(init);  
-            }catch(e){
-                console.error(e);
-                alert("error when loading init script");
-            }
-        });        
-    });
+    
+    RE.$L.script("https://unpkg.com/store/dist/store.everything.min.js", function(){
+        RE.$PS = store;
+        var init = store.get('RE.init') || "";
+        try{
+          eval(init);  
+        }catch(e){
+            console.error(e);
+            alert("error when loading init script");
+        }
+    });        
+
     RE.$L.link("https://unpkg.com/codemirror/addon/dialog/dialog.css");
     
    
