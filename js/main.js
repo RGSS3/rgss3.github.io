@@ -71,8 +71,7 @@ require('./load/fonts.js');
 require('./load/codemirror.js')
 require('../css/main.css')
 
-var cm = window.CodeMirror;
-RE.$B.push( () => {
+RE.$B.initCodeMirror = (cm) => {
     
     window.location.hash.replace(/\+([^+]*)/g, function(thing){
        RE.$R.get(thing)(_ => _);
@@ -81,28 +80,10 @@ RE.$B.push( () => {
     window.location.search.replace(/\+([^+]*)/g, function(thing){
         RE.$R.get(thing)(_ => _);
     });
-    
-    
-    
-    RE.$L.script("https://unpkg.com/store/dist/store.everything.min.js", function(){
-        RE.$PS = store;
-        var init = store.get('RE.init') || "";
-        try{
-          eval(init);  
-        }catch(e){
-            console.error(e);
-            alert("error when loading init script");
-        }
-    });        
-
     RE.$L.link("https://unpkg.com/codemirror/addon/dialog/dialog.css");
-    
-   
     var editor    = RE.$O['editor'] = new cm(document.body);
     var extraKeys = RE.$O['keymap'] = {};
     RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
-    RE.$L.script("https://unpkg.com/codemirror/mode/javascript/javascript.js", function(){ editor.setOption("mode", "javascript");});
-    RE.$L.script("https://unpkg.com/codemirror/addon/dialog/dialog.js");
     editor.setOption("theme", RE.$B.initTheme);
     editor.setOption("value", RE.$B.initValue);    
     editor.setOption("extraKeys", extraKeys);
@@ -126,4 +107,4 @@ RE.$B.push( () => {
     Object.defineProperty(window, 'help', {get: function(){
       console.log(RE.$B.helpMsg);
     }});
-});
+};
