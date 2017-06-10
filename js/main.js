@@ -112,10 +112,12 @@ RE.$B.push( () => {
     RE.$CMD["command"] = function(text){
         console.log(text);
     }
-    RE.$O["keymap"]['Shift-Ctrl-1'] = function(){
+    RE.$O["keymap"]['Shift-Ctrl-1'] = 
+    RE.$O["keymap"]['Shift-Cmd-1'] = function(){
        RE.$CMD["run"]();  
     };
-    RE.$O["keymap"]['Ctrl-`'] = function(){
+    RE.$O["keymap"]['Ctrl-`'] = 
+    RE.$O["keymap"]['Cmd-`'] = function(){
        RE.$O.editor.openDialog("<input class='commandbar'>", function(text){ RE.$CMD["command"](text)});
     };
     document.querySelector("#run").addEventListener('click', function(){
