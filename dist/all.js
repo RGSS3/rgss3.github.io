@@ -2396,7 +2396,7 @@ RE.$L.linkPromise = function (src) {
         RE.$L.link(src, res);
     });
 };
-RE.$B.initTheme = "stellarized dark";
+RE.$B.initTheme = "solarized dark";
 RE.$B.initValue = `const result = (val) => {
    let value = RE.$O["editor"].getValue();
    value     = value.replace(/\\/\\*\\*\\*\\n[\\w\\W]*? \\*\\*\\*\\//, "/***\\n" + val + "\\n ***/");
@@ -2452,6 +2452,7 @@ RE.$B.push(() => {
 
     var editor = RE.$O['editor'] = new cm(document.body);
     var extraKeys = RE.$O['keymap'] = {};
+    RE.$L.link("https://unpkg.com/codemirror/theme/solarized.css");
     RE.$L.script("https://unpkg.com/codemirror/mode/javascript/javascript.js", function () {
         editor.setOption("mode", "javascript");
     });
